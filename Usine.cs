@@ -6,19 +6,9 @@
     internal class Usine
     {
         /// <summary>
-        /// Niveau de qualité des trombones produits.
+        /// Liste des caracteristiques d'une usine.
         /// </summary>
-        public int Qualite { get; set; }
-
-        /// <summary>
-        /// Quantité de matière consommée pour la production d'un trombone.
-        /// </summary>
-        public int QuantiteConsommee { get; set;}
-
-        /// <summary>
-        /// Vitesse de production des trombones.
-        /// </summary>
-        public int VitesseProduction { get; set;}
+        private List<Caracteristique> caracteristiques;
 
         /// <summary>
         /// Joueur qui possède l'usine.
@@ -32,9 +22,12 @@
         public Usine(Joueur proprietaire)
         {
             this.proprietaire = proprietaire;
-            Qualite = 0;
-            QuantiteConsommee = 100;
-            VitesseProduction = 1;
+            caracteristiques = new List<Caracteristique>()
+            {
+                new Caracteristique("Qualite", 0),
+                new Caracteristique("VitesseProduction" , 1),
+                new Caracteristique("QuantiteConsommee", 100)
+            };
         }
 
         /// <summary>
@@ -48,6 +41,23 @@
                 // Attendre amelioration.TempsRecherche
 
                 amelioration.AppliquerAmelioration(this);
+            }
+        }
+
+        /// <summary>
+        /// Change la valeur d'une caractéristique de l'usine en utilisant son nom.
+        /// </summary>
+        /// <param name="nom">Le nom de la caractéristique à changer.</param>
+        /// <param name="changement">La valeur du changement à faire.</param>
+        public void ChangerCaracteristique(string nom, int changement)
+        {
+            foreach(Caracteristique caracteristique in caracteristiques)
+            {
+                if(c.Nom == nom)
+                {
+                    c.Valeur += changement;
+                    return;
+                }
             }
         }
     }
