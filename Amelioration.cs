@@ -1,4 +1,5 @@
-﻿namespace exercice_trombone
+﻿
+namespace exercice_trombone
 {
     /// <summary>
     /// Amélioration des caractéristiques d'une usine.
@@ -16,18 +17,28 @@
         public int TempsRecherche { get; private set; }
 
         /// <summary>
-        /// Amélioration de la qualité des trombones produits.
+        /// Liste des effets appliqués par l'amélioration
         /// </summary>
-        public int Qualite { get; internal set; }
+        private List<EffetAmelioration> effets;
 
         /// <summary>
-        /// Amélioration de la quantité de matière consommée.
+        /// Crée une nouvelle amélioration sans effet.
         /// </summary>
-        public int QuantiteConsommee { get; private set; }
+        public Amelioration()
+        {
+            effets = new();
+        }
 
         /// <summary>
-        /// Amélioration de la vitesse de production.
+        /// Applique les effets sur l'usine
         /// </summary>
-        public int VitesseProduction { get; private set; }
+        /// <param name="usine">L'usine qui reçoit l'amélioration</param>
+        internal void AppliquerAmelioration(Usine usine)
+        {
+            foreach(EffetAmelioration effet in effets)
+            {
+                effet.AppliquerEffet(usine);
+            }
+        }
     }
 }

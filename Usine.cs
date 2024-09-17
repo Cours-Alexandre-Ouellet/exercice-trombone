@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace exercice_trombone
+﻿namespace exercice_trombone
 {
     /// <summary>
     /// Usine de fabrication de trombones.
@@ -14,17 +8,17 @@ namespace exercice_trombone
         /// <summary>
         /// Niveau de qualité des trombones produits.
         /// </summary>
-        private int qualite;
+        public int Qualite { get; set; }
 
         /// <summary>
         /// Quantité de matière consommée pour la production d'un trombone.
         /// </summary>
-        private int quantiteConsommee;
+        public int QuantiteConsommee { get; set;}
 
         /// <summary>
         /// Vitesse de production des trombones.
         /// </summary>
-        private int vitesseProduction;
+        public int VitesseProduction { get; set;}
 
         /// <summary>
         /// Joueur qui possède l'usine.
@@ -38,9 +32,9 @@ namespace exercice_trombone
         public Usine(Joueur proprietaire)
         {
             this.proprietaire = proprietaire;
-            qualite = 0;
-            quantiteConsommee = 100;
-            vitesseProduction = 1;
+            Qualite = 0;
+            QuantiteConsommee = 100;
+            VitesseProduction = 1;
         }
 
         /// <summary>
@@ -53,9 +47,7 @@ namespace exercice_trombone
             {
                 // Attendre amelioration.TempsRecherche
 
-                qualite += amelioration.Qualite;
-                quantiteConsommee += amelioration.QuantiteConsommee;
-                vitesseProduction += amelioration.VitesseProduction;
+                amelioration.AppliquerAmelioration(this);
             }
         }
     }
