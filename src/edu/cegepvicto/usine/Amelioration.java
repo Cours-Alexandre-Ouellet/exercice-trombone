@@ -1,24 +1,11 @@
 package edu.cegepvicto.usine;
 
+import java.util.ArrayList;
+
 /**
  * Représente une façon d'améliorer la production de l'usine
  */
 public class Amelioration {
-
-    /**
-     * Changement dans la qualité de la production.
-     */
-    private int qualite;
-
-    /**
-     * Changement dans la qualité de matière consommée.
-     */
-    private int matiereConsommee;
-
-    /**
-     * Changement dans la vitesse de production.
-     */
-    private int vitesseProduction;
 
     /**
      * Coût d'achat de l'amélioration.
@@ -31,27 +18,15 @@ public class Amelioration {
     private int tempsRecherche;
 
     /**
-     * Accesseur de l'amélioration de la qualité.
-     * @return la valeur d'amélioration de la qualité.
+     * Liste des effets de l'amélioration.
      */
-    public int getQualite() {
-        return qualite;
-    }
+    private ArrayList<EffetAmelioration> effets;
 
     /**
-     * Accesseur de l'amélioration de la matière consommée.
-     * @return la valeur de la matière consommée.
+     * Génère une nouvelle amélioration vide.
      */
-    public int getMatiereConsommee(){
-        return matiereConsommee;
-    }
-
-    /**
-     * Accesseur de l'amélioration de la vitesse de production.
-     * @return valeur d'amélioration de la vitesse de production.
-     */
-    public int getVitesseProduction() {
-        return vitesseProduction;
+    public Amelioration() {
+        effets = new ArrayList<>();
     }
 
     /**
@@ -68,5 +43,16 @@ public class Amelioration {
      */
     public int getTempsRecherche() {
         return tempsRecherche;
+    }
+
+    /**
+     * Applique une amélioration sur l'usine.
+     * @param usine l'usine à améliorer.
+     */
+    public void appliquerAmelioration(Usine usine)
+    {
+        for (EffetAmelioration effet : effets) {
+            effet.appliquerEffet(usine);
+        }
     }
 }

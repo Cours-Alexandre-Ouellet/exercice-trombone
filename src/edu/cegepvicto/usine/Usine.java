@@ -34,6 +34,54 @@ public class Usine {
     }
 
     /**
+     * Accesseur de la qualité des trombones..
+     * @return la valeur de la qualité des trombones.
+     */
+    public int getQualite() {
+        return qualite;
+    }
+
+    /**
+     * Mutateur de la qualité des trombones.
+     * @param qualite la nouvelle qualité des trombones
+     */
+    public void setQualite(int qualite) {
+        this.qualite = qualite;
+    }
+
+    /**
+     * Accesseur de la quantité de matière consommée.
+     * @return la quantité de matière consommée par la création de trombones.
+     */
+    public int getMatiereConsommee() {
+        return matiereConsommee;
+    }
+
+    /**
+     * Mutateur de la quantité de matière consommée par la création de trombones.
+     * @param matiereConsommee la nouvelle quantité de matière consommée par la création de trombones.
+     */
+    public void setMatiereConsommee(int matiereConsommee) {
+        this.matiereConsommee = matiereConsommee;
+    }
+
+    /**
+     * Accesseur de la vitesse de production.
+     * @return la valeur de la vitesse de production.
+     */
+    public int getVitesseProduction() {
+        return vitesseProduction;
+    }
+
+    /**
+     * Mutateur de la vitesse de production de l'usine.
+     * @param vitesseProduction la nouvelle vitesse de production de l'usine.
+     */
+    public void setVitesseProduction(int vitesseProduction) {
+        this.vitesseProduction = vitesseProduction;
+    }
+
+    /**
      * Achète une amélioration pour l'usine et applique les changements après le délai.
      * @param amelioration l'amélioration qui est achetée pour l'usine.
      */
@@ -41,9 +89,7 @@ public class Usine {
         if(proprietaire.payer(amelioration.getCout())) {
             // Attendre amelioration.tempsRecherche
 
-            qualite += amelioration.getQualite();
-            matiereConsommee += amelioration.getMatiereConsommee();
-            vitesseProduction += amelioration.getVitesseProduction();
+            amelioration.appliquerAmelioration(this);
         }
     }
 
